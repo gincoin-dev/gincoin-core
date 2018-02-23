@@ -1,0 +1,6 @@
+usr/local/bin/gincoin-qt usr/bin
+share/pixmaps/gincoin32.xpm usr/share/pixmaps
+share/pixmaps/gincoin16.xpm usr/share/pixmaps
+share/pixmaps/gincoin128.png usr/share/pixmaps
+debian/gincoin-qt.desktop usr/share/applications
+debian/gincoin-qt.protocol usr/share/kde4/services/

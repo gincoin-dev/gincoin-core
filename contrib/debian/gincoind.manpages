@@ -1,0 +1,3 @@
+debian/manpages/gincoind.1
+debian/manpages/gincoin.conf.5
+debian/manpages/gincoin-cli.1

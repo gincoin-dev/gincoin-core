@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+# -*- mode: makefile; coding: utf-8 -*-
+
+#DEB_MAKE_CHECK_TARGET = test_gincoin
+#build/gincoind::
+#	$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),,src/test_gincoin)
+
+DEB_INSTALL_EXAMPLES_gincoind += debian/examples/*
+DEB_INSTALL_MANPAGES_gincoind += debian/manpages/*
+
+%:
+	dh --with bash-completion $@
+
+override_dh_auto_clean:
+	if [ -f Makefile ]; then $(MAKE) distclean; fi
+	rm -rf Makefile.in aclocal.m4 configure src/Makefile.in src/gincoin-config.h.in src/build-aux src/qt/Makefile.in src/qt/test/Makefile.in src/test/Makefile.in
+
+# Yea, autogen should be run on the source archive, but I like doing git archive
+override_dh_auto_configure:
+	./autogen.sh
+	./configure --without-miniupnpc --with-gui=qt4
+
+override_dh_auto_test:
+	make check

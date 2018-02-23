@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Gincoin
+Comment=Gincoin P2P Cryptocurrency
+Comment[fr]=Gincoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Gincoin, eşten eşe kriptografik sanal para birimi
+Exec=gincoin-qt %u
+Terminal=false
+Type=Application
+Icon=gincoin128
+MimeType=x-scheme-handler/gincoin;
+Categories=Office;Finance;

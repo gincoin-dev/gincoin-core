@@ -1,0 +1,22 @@
+[Unit]
+Description=Gincoin's distributed currency daemon
+After=network.target
+
+[Service]
+User=gincoincode
+Group=gincoincore
+
+Type=forking
+PIDFile=/var/lib/gincoind/gincoind.pid
+ExecStart=/usr/bin/gincoind -daemon -pid=/var/lib/gincoind/gincoind.pid \
+-conf=/etc/gincoincore/gincoin.conf -datadir=/var/lib/gincoind -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
