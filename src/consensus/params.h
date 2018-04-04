@@ -84,6 +84,23 @@ struct Params {
     int64_t DifficultyAdjustmentInterval() const { return nPowTargetTimespan / nPowTargetSpacing; }
     uint256 nMinimumChainWork;
     uint256 defaultAssumeValid;
+    int mPowDGWReconfigureApr2018Height;
+    int64_t nPowApr2018TargetSpacing;
+    int64_t GetPowTargetSpacing(int blockHeight) const {
+        if (blockHeight >= mPowDGWReconfigureApr2018Height) {
+            return nPowApr2018TargetSpacing;
+        } else {
+            return nPowTargetSpacing;
+        }
+    }
+    int nApr2018DGWPastBlocks;
+    int64_t GetDGWPastBlocks(int blockHeight) const {
+        if (blockHeight >= mPowDGWReconfigureApr2018Height) {
+            return 30;
+        } else {
+            return 24;
+        }
+    }
 };
 } // namespace Consensus
 

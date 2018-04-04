@@ -1,5 +1,5 @@
 ---
-name: "gincoin-win-0.12"
+name: "gincoin-win-1.0.2.0"
 enable_cache: true
 suites:
 - "trusty"

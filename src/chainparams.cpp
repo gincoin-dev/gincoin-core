@@ -93,8 +93,8 @@ public:
         consensus.BIP34Height = 0;
         consensus.BIP34Hash = uint256S("0x00000cd6bde619b2c3b23ad2e384328a450a37fa28731debf748c3b17f91f97d");
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Gincoin: 1 day
-        consensus.nPowTargetSpacing = 2.5 * 60; // Gincoin: 2.5 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Gincoin: 1 day // used only for KGW and Bitcoin Diff
+        consensus.nPowTargetSpacing = 2.5 * 60; // Gincoin: 2.5 minutes // soft change to nPowApr2018TargetSpacing after mPowDGWReconfigureApr2018Height
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nPowKGWHeight = 15200; //not used
@@ -117,11 +117,15 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nWindowSize = 4032;
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nThreshold = 3226; // 80% of 4032
 
+        // Consensus Update Apr 2018
+        consensus.mPowDGWReconfigureApr2018Height = 23750;
+        consensus.nPowApr2018TargetSpacing = 2 * 60;
+
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000006500074");
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000047a222baa2d1fe");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x000001d9726a3d9624b6bd53428b658204333461708f84a520570272c5d7f511");
+        consensus.defaultAssumeValid = uint256S("0x00000000000a106c24554e369cdacdb683fd6daef276ca38b1991ad82e74dc63");
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -181,9 +185,11 @@ public:
                     (  0, consensus.hashGenesisBlock)
                     ( 20, uint256S("0x000003e547bec8e303a0af407ab1781e1a56ce995d4cb8abd9443d8e89daee94"))
                     ( 100, uint256S("0x000001d9726a3d9624b6bd53428b658204333461708f84a520570272c5d7f511"))
+                    ( 1000, uint256S("0x00000000015079cff402ec1f9d88af43eba786f1a70bed49eca4c96b1786c074"))
+                    ( 22092, uint256S("0x00000000000a106c24554e369cdacdb683fd6daef276ca38b1991ad82e74dc63"))
             ,
-            1519397453, // * UNIX timestamp of last checkpoint block
-            0,    // * total number of transactions between genesis and last checkpoint
+            1522841266, // * UNIX timestamp of last checkpoint block
+            28497,    // * total number of transactions between genesis and last checkpoint
             //   (the tx=... number in the SetBestChain debug.log lines)
             5000        // * estimated number of transactions per day after checkpoint
         };
@@ -218,8 +224,8 @@ public:
         consensus.BIP34Height = 0;
         consensus.BIP34Hash = uint256S("0x0000070936337da4fa971d46112401d17a7288b57bde0e45fba010b94b2577a9");
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Gincoin: 1 day
-        consensus.nPowTargetSpacing = 2.5 * 60; // Gincoin: 2.5 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Gincoin: 1 day // used only for KGW and Bitcoin Diff
+        consensus.nPowTargetSpacing = 2 * 60; // Gincoin: 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nPowKGWHeight = 4001; // nPowKGWHeight >= nPowDGWHeight means "no KGW"
@@ -247,6 +253,10 @@ public:
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00");
+
+        // Consensus Update Apr 2018
+        consensus.mPowDGWReconfigureApr2018Height = 1;
+        consensus.nPowApr2018TargetSpacing = 2 * 60;
 
         pchMessageStart[0] = 0xce;
         pchMessageStart[1] = 0xe2;
@@ -336,8 +346,8 @@ public:
         consensus.BIP34Height = -1; // BIP34 has not necessarily activated on regtest
         consensus.BIP34Hash = uint256();
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Gincoin: 1 day
-        consensus.nPowTargetSpacing = 2.5 * 60; // Gincoin: 2.5 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Gincoin: 1 day // used only for KGW and Bitcoin Diff
+        consensus.nPowTargetSpacing = 2 * 60; // Gincoin: 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
         consensus.nPowKGWHeight = 15200; // same as mainnet
@@ -359,6 +369,10 @@ public:
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00");
+
+        // Consensus Update Apr 2018
+        consensus.mPowDGWReconfigureApr2018Height = 1;
+        consensus.nPowApr2018TargetSpacing = 2 * 60;
 
         pchMessageStart[0] = 0xfc;
         pchMessageStart[1] = 0xc1;
