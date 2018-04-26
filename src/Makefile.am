@@ -348,6 +348,16 @@ crypto_libbitcoin_crypto_a_SOURCES += \
   crypto/neoscrypt.c \
   crypto/neoscrypt.h
 
+# lyra2z
+crypto_libbitcoin_crypto_a_SOURCES += \
+  crypto/Lyra2Z/Lyra2.c \
+  crypto/Lyra2Z/Lyra2.h \
+  crypto/Lyra2Z/Lyra2Z.c \
+  crypto/Lyra2Z/Lyra2Z.h \
+  crypto/Lyra2Z/Sponge.c \
+  crypto/Lyra2Z/Sponge.h
+
+
 # common: shared between gincoind, and gincoin-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)

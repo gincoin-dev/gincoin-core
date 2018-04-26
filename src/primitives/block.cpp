@@ -10,12 +10,20 @@
 #include "utilstrencodings.h"
 #include "crypto/common.h"
 #include "crypto/neoscrypt.h"
+#include "crypto/Lyra2Z/Lyra2Z.h"
+#include "consensus/consensus.h"
 
 uint256 CBlockHeader::GetHash() const
 {
     uint256 thash;
     unsigned int profile = 0x0;
-    neoscrypt((unsigned char *) &nVersion, (unsigned char *) &thash, profile);
+
+    if (nTime <= LYRA2Z_TIMESTAMP) {
+        neoscrypt((unsigned char *) &nVersion, (unsigned char *) &thash, profile);
+    } else {
+        lyra2z_hash(BEGIN(nVersion), BEGIN(thash));
+    }
+
     return thash;
 }
 

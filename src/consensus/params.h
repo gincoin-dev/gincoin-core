@@ -101,6 +101,7 @@ struct Params {
             return 24;
         }
     }
+    uint32_t nLyra2zTimestamp;
 };
 } // namespace Consensus
 
