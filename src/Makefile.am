@@ -355,8 +355,9 @@ crypto_libbitcoin_crypto_a_SOURCES += \
   crypto/Lyra2Z/Lyra2Z.c \
   crypto/Lyra2Z/Lyra2Z.h \
   crypto/Lyra2Z/Sponge.c \
-  crypto/Lyra2Z/Sponge.h
-
+  crypto/Lyra2Z/Sponge.h \
+  crypto/Lyra2Z/sph_blake.h \
+  crypto/Lyra2Z/sph_types.h
 
 # common: shared between gincoind, and gincoin-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
